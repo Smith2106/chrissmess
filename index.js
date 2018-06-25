@@ -1,8 +1,11 @@
 const button = document.querySelector('button');
 
-function changeHeading() {
+function changeHeading(e) {
+    e.preventDefault();
     const heading = document.querySelector('.changingHeading');
-    heading.textContent = 'Nobody knows';
+    const textInput = document.querySelector('input');
+    const newHeading = textInput.value;
+    heading.textContent = newHeading;
 }
 
 button.addEventListener('click', changeHeading);

@@ -8,8 +8,17 @@ function addMovies(e) {
     const year = e.target.year.value;
 
     const item = document.createElement('li');
+    const movieItem = document.createElement('span');
+    const yearItem = document.createElement('span');
 
-    item.textContent = `${movie}, (${year})`;
+    movieItem.textContent = `${movie} `;
+    yearItem.textContent = `(${year})`;
+
+    movieItem.classList.add('movie');
+    yearItem.classList.add('year');
+
+    item.appendChild(movieItem);
+    item.appendChild(yearItem);
     flicksList.appendChild(item);
 
     e.target.reset();

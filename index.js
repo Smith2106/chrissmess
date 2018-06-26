@@ -7,7 +7,7 @@ function changeHeading(e) {
     const textInput = e.target.movie;
     const newFlick = textInput.value;
     flicksDiv.innerHTML += `<p>${newFlick}</p>`;
-    textInput.value = '';
+    e.target.reset();
 }
 
 form.addEventListener('submit', changeHeading);

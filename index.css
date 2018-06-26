@@ -10,6 +10,11 @@ h1 {
     color: #575757;
 }
 
+label {
+    font-family: 'Merriweather';
+    color: #575757;
+}
+
 input, select {
     margin-top: 0.5rem;
     margin-bottom: 0.5rem;
@@ -19,6 +24,10 @@ input, select {
     border: 1px solid lightgray;
     padding: 10px;
     color: #575757;
+}
+
+select, [type="color"], button {
+    cursor: pointer;
 }
 
 [type="color"] {

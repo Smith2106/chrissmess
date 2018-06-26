@@ -1,5 +1,62 @@
-@import url('https://fonts.googleapis.com/css?family=Lato');
+@import url('https://fonts.googleapis.com/css?family=Merriweather|Shrikhand');
 
 body {
-    font-family: 'Lato', Helvetica, Arial, sans-serif;
+    font-family: 'Merriweather', Helvetica, Arial, sans-serif;
+    text-align: center;
+}
+
+h1 {
+    font-family: 'Shrikhand';
+}
+
+input {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    border-radius: 2px;
+    font-family: 'Merriweather';
+    box-shadow: 2px 2px 2px lightgray;
+    border: 1px solid lightgray;
+    padding: 10px;
+}
+
+button {
+    margin-top: 0.5rem;
+    font-family: 'Merriweather';
+    border-radius: 2px;
+    background-color: rgb(211, 211, 211);
+    color: #757575;
+    padding: 15px 32px;
+    text-decoration: none;
+    border: none;
+}
+
+button:hover {
+    color: #575757;
+    box-shadow: 1.5px 1.5px 1.5px gray;
+}
+
+.movie {
+    font-style: italic;
+    font-size: 16px;
+}
+
+.year {
+    font-weight: bold;
+}
+
+li {
+    border: 2px black solid;
+    border-radius: 20px;
+    list-style-type: none;
+    background-color: rgb(221, 221, 143);
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    width: 100%;
+    text-align: center;
+    list-style-position: inside;
+    position: relative;
+    right: 20px;
+    font-family: 'Merriweather';
 }

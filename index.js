@@ -6,7 +6,7 @@ function changeHeading(e) {
     const flicksDiv = document.querySelector('#flicks');
     const textInput = e.target.movie;
     const newFlick = textInput.value;
-    flicksDiv.textContent += '\n' + newFlick;
+    flicksDiv.innerHTML += '<p>' + newFlick + '</p>';
 }
 
 form.addEventListener('submit', changeHeading);

@@ -8,7 +8,6 @@ const addMovies = function(e) {
     const form = e.target;
 
     getItemProps(itemObj, form);
-    console.log(itemObj);
 
     const item = createItem(itemObj);
     
@@ -31,10 +30,12 @@ const createItem = function(itemObj) {
     const textItems = createText(itemObj.movie, itemObj.year, itemObj.rating);
     textItems.forEach(textItem => item.appendChild(textItem));
 
+    setColors(itemObj.backColor, itemObj.textColor, item);
+
     return item;
 }
 
-const createText = function(movie, year, rating, item) {
+const createText = function(movie, year, rating) {
     const movieItem = document.createElement('span');
     const yearItem = document.createElement('span');
     const ratingItem = document.createElement('span');
@@ -48,6 +49,12 @@ const createText = function(movie, year, rating, item) {
     ratingItem.classList.add('rating');
 
     return [movieItem, yearItem, ratingItem];
+}
+
+const setColors = function(backColor, textColor, item) {
+    item.style.backgroundColor = backColor;
+    item.style.color = textColor;
+    item.style.border = `2px ${textColor} solid`;
 }
 
 form.addEventListener('submit', addMovies);

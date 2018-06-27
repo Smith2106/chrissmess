@@ -54,6 +54,16 @@ button:hover {
     box-shadow: 1.5px 1.5px 1.5px gray;
 }
 
+.delete-btn {
+    color: white;
+    background-color: rgb(184, 29, 29);
+}
+
+.delete-btn:hover {
+    color: rgb(231, 216, 216);
+    background-color: rgb(136, 25, 25);
+}
+
 .movie {
     font-style: italic;
     font-size: 16px;

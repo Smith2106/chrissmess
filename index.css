@@ -5,6 +5,10 @@ body {
     text-align: center;
 }
 
+span {
+    display: block;
+}
+
 h1 {
     font-family: 'Shrikhand';
     color: #575757;

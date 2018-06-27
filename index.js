@@ -31,8 +31,20 @@ class App {
         flicksList.removeChild(item);
         this.allMovies.splice(this.allMovies.findIndex(movie => movie.name === flick.name), 1);
     }
+
+    handleFavorite(item, flick) {
+        if (item.classList.contains('favorite')) {
+            item.classList.remove('favorite');
+            this.allMovies[this.allMovies.findIndex(movie => movie.name === flick.name)].favorite = false;
+        }
+        else {
+            item.classList.add('favorite');
+            this.allMovies[this.allMovies.findIndex(movie => movie.name === flick.name)].favorite = true;
+        }
+    }
     
     getItemProps(flick, form) {
+        flick.favorite = false;
         flick.movie = form.movie.value;
         flick.year = form.year.value;
         flick.backColor = form.backColor.value;
@@ -53,20 +65,30 @@ class App {
         item.classList.add('flick');
         // Render the properties in the list element that aren't colors.
         const properties = Object.keys(flick);
-        properties.forEach(property => {
-            const span = this.renderProperty(property, flick[property]);
-            !property.toLowerCase().includes('color') ? item.appendChild(span) : '';
+        properties
+            .filter(property => !property.toLowerCase().includes('color') && !property.includes('favorite'))
+            .forEach(property => {
+                const span = this.renderProperty(property, flick[property]);
+                item.appendChild(span);
         });
     
         this.setColors(flick.backColor, flick.textColor, item);
-        // Create delete button and have it handle deletion of elements
-        const button = document.createElement('button');
-        button.textContent = 'Delete';
-        button.classList.add('delete-btn');
-        item.appendChild(button);
-        button.addEventListener('click', () => this.handleDelete(item, flick));
+        // Create delete and favorite button and have it handle deletion and favorite of elements
+        const delButton = this.renderButton('Delete', 'del-btn');
+        const favButton = this.renderButton('Favorite ★', 'fav-btn')
+        item.appendChild(delButton);
+        item.appendChild(favButton);
+        delButton.addEventListener('click', () => this.handleDelete(item, flick));
+        favButton.addEventListener('click', () => this.handleFavorite(item, flick));
     
         return item;
+    }
+
+    renderButton(name, value) {
+        const button = document.createElement('button');
+        button.textContent = name;
+        button.classList.add(value);
+        return button;
     }
     
     setColors(backColor, textColor, item) {

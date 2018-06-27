@@ -54,14 +54,34 @@ button:hover {
     box-shadow: 1.5px 1.5px 1.5px gray;
 }
 
-.delete-btn {
+.del-btn {
     color: white;
     background-color: rgb(184, 29, 29);
 }
 
-.delete-btn:hover {
+.del-btn:hover {
     color: rgb(231, 216, 216);
     background-color: rgb(136, 25, 25);
+}
+
+.fav-btn {
+    color: rgb(58, 54, 54);
+    background-color: rgb(229, 243, 40);
+}
+
+.fav-btn:hover {
+    color: rgb(34, 32, 32);
+    background-color: rgb(197, 209, 32);
+}
+
+.favorite {
+    background: #dd3e54; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #dd3e54, #6be585); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #dd3e54, #6be585); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.favorite > span {
+    color: rgb(255, 255, 255);
 }
 
 .movie {

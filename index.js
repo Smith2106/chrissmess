@@ -24,11 +24,12 @@ class App {
         // Reset the form and reset focus to first field.
         e.target.reset();
         e.target.movie.focus();
-        console.log(this.allMovies);
     }
 
-    handleDelete() {
-
+    handleDelete(item, flick) {
+        const flicksList = document.querySelector('#flicks');
+        flicksList.removeChild(item);
+        this.allMovies.splice(this.allMovies.findIndex(movie => movie.name === flick.name), 1);
     }
     
     getItemProps(flick, form) {
@@ -62,8 +63,8 @@ class App {
         const button = document.createElement('button');
         button.textContent = 'Delete';
         button.classList.add('delete-btn');
-        button.addEventListener('click', () => this.handleDelete);
         item.appendChild(button);
+        button.addEventListener('click', () => this.handleDelete(item, flick));
     
         return item;
     }

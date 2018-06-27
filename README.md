@@ -1,5 +1,23 @@
 # Chrissmess
 
+## Day 3 Homework
+
+* In addition to building a list item and adding it to the DOM (as we are now), also store each movie in an array.
+
+### Bonus Credit
+
+* Add a _delete_ button to each list item that removes it from the list.
+
+### Super Mega Bonus Credit.
+
+* Remove the flick from the array as well.
+
+### Super Mega Bonus Credit Hyper Fighting
+
+* Add a _favorite_ button to each flick as well that lets you mark your favorites.
+* Display favorites differently.
+* Be sure the favorties are recorded appropriately in the array.
+
 ## Day 2 Homework
 
 * Give the funtion `changeHeading` a more accurate name.

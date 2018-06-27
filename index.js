@@ -1,6 +1,7 @@
 class App {
     constructor() {
         const form = document.querySelector('form');
+        this.allMovies = [];
         form.addEventListener('submit', e => {
             e.preventDefault();
             this.handleSubmit(e);
@@ -15,11 +16,14 @@ class App {
         const form = e.target;
     
         this.getItemProps(flick, form);
+        this.allMovies.push(flick);
+
         const item = this.renderItem(flick);
         flicksList.appendChild(item);
     
         e.target.reset();
         e.target.movie.focus();
+        console.log(this.allMovies);
     }
     
     getItemProps(flick, form) {

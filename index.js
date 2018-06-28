@@ -38,14 +38,8 @@ class App {
     handleFavorite(flick, e) {
         // Toggle the favorite class
         const item = e.target.closest('.flick');
-        if (item.classList.contains('favorite')) {
-            item.classList.remove('favorite');
-            this.allMovies[this.allMovies.indexOf(flick)].favorite = false;
-        }
-        else {
-            item.classList.add('favorite');
-            this.allMovies[this.allMovies.indexOf(flick)].favorite = true;
-        }
+        item.classList.contains('favorite') ? item.classList.remove('favorite') : item.classList.add('favorite');
+        flick.favorite = !flick.favorite;
     }
     
     getItemProps(flick, form) {

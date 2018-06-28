@@ -29,19 +29,22 @@ class App {
         e.target.movie.focus();
     }
 
-    handleDelete(item, flick) {
+    handleDelete(flick, e) {
+        const item = e.target.closest('.flick');
         this.flicksList.removeChild(item);
-        this.allMovies.splice(this.allMovies.findIndex(movie => movie.name === flick.name), 1);
+        this.allMovies.splice(this.allMovies.indexOf(flick), 1);
     }
 
-    handleFavorite(item, flick) {
+    handleFavorite(flick, e) {
+        // Toggle the favorite class
+        const item = e.target.closest('.flick');
         if (item.classList.contains('favorite')) {
             item.classList.remove('favorite');
-            this.allMovies[this.allMovies.findIndex(movie => movie.name === flick.name)].favorite = false;
+            this.allMovies[this.allMovies.indexOf(flick)].favorite = false;
         }
         else {
             item.classList.add('favorite');
-            this.allMovies[this.allMovies.findIndex(movie => movie.name === flick.name)].favorite = true;
+            this.allMovies[this.allMovies.indexOf(flick)].favorite = true;
         }
     }
     
@@ -80,8 +83,8 @@ class App {
         const favButton = this.renderButton('Favorite ★', 'fav-btn')
         item.appendChild(delButton);
         item.appendChild(favButton);
-        delButton.addEventListener('click', () => this.handleDelete(item, flick));
-        favButton.addEventListener('click', () => this.handleFavorite(item, flick));
+        delButton.addEventListener('click', e => this.handleDelete(flick, e));
+        favButton.addEventListener('click', e => this.handleFavorite(flick, e));
     
         return item;
     }

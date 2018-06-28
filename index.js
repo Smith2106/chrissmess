@@ -20,6 +20,9 @@ class App {
         // Render the properties in the item and render the item in the flicks list on the page
         const item = this.renderItem(flick);
         flicksList.appendChild(item);
+
+        console.log(flick.rating);
+        if (flick.rating.includes(':(')) this.angry(item);
     
         // Reset the form and reset focus to first field.
         e.target.reset();
@@ -96,6 +99,22 @@ class App {
         item.style.color = textColor;
         item.style.border = `2px ${textColor} solid`;
     }
+
+    angry(item) {
+        setTimeout(() => item.classList.add('angry'), 500);
+    }
 }
 
 new App();
+
+const pressed = [];
+  const secretCode = 'thor';
+  window.addEventListener('keyup', (e) => {
+    pressed.push(e.key);
+    pressed.splice(-secretCode.length - 1, pressed.length - secretCode.length);
+
+    if (pressed.join('').includes(secretCode)) {
+      console.log('DING DING!');
+      cornify_add();
+    }
+  });

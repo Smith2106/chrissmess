@@ -74,6 +74,17 @@ button:hover {
     background-color: rgb(197, 209, 32);
 }
 
+.angry {
+    transform: scale(1.05);
+    transform: rotate(360deg);
+    transform: skewX(170deg);
+    background: #870000;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #190A05, #870000);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #190A05, #870000); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    color: white;
+    transition: 2s;
+}
+
 .favorite {
     background: #dd3e54; /* fallback for old browsers */
     background: -webkit-linear-gradient(to right, #dd3e54, #6be585); /* Chrome 10-25, Safari 5.1-6 */

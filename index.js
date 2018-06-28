@@ -38,8 +38,7 @@ class App {
     handleFavorite(flick, e) {
         // Toggle the favorite class
         const item = e.target.closest('.flick');
-        item.classList.contains('favorite') ? item.classList.remove('favorite') : item.classList.add('favorite');
-        flick.favorite = !flick.favorite;
+        flick.favorite = item.classList.toggle('favorite');
     }
     
     getItemProps(flick, form) {

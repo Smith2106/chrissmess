@@ -30,6 +30,11 @@ input, select {
     color: #575757;
 }
 
+input[type="text"]:hover {
+    border: 1px solid #575757;
+    box-shadow: 3px 3px 3px rgb(197, 197, 197);
+}
+
 select, [type="color"], button {
     cursor: pointer;
 }

@@ -1,11 +1,29 @@
 class App {
     constructor() {
+        // Get movies from local storage and load them into flicks list on the page
         const form = document.querySelector('form');
         this.allMovies = [];
         this.flicksList = document.querySelector('#flicks');
+        this.load();
+
         form.addEventListener('submit', e => {
             e.preventDefault();
             this.handleSubmit(e);
+        });
+    }
+
+    save() {
+        // Save movie list to local storage
+        localStorage.setItem('movieList', JSON.stringify(this.allMovies));
+    }
+
+    load() {
+        // Load local storage into movie list
+        this.allMovies = JSON.parse(localStorage.getItem('movieList')) || [];
+        this.allMovies.forEach(flick => {
+            const item = this.renderItem(flick);
+            flick.favorite ? item.classList.add('favorite') : '';
+            this.flicksList.appendChild(item);
         });
     }
 
@@ -17,7 +35,7 @@ class App {
         // Set the properties of the flick object and add flicks to movies array
         this.getItemProps(flick, form);
         this.allMovies.push(flick);
-        localStorage.setItem('movieList', JSON.stringify(this.allMovies));
+        this.save();
         // Render the properties in the item and render the item in the flicks list on the page
         const item = this.renderItem(flick);
         this.flicksList.appendChild(item);
@@ -34,14 +52,14 @@ class App {
         const item = e.target.closest('.flick');
         this.flicksList.removeChild(item);
         this.allMovies.splice(this.allMovies.indexOf(flick), 1);
-        localStorage.setItem('movieList', JSON.stringify(this.allMovies));
+        this.save();
     }
 
     handleFavorite(flick, e) {
         // Toggle the favorite class
         const item = e.target.closest('.flick');
         flick.favorite = item.classList.toggle('favorite');
-        localStorage.setItem('movieList', JSON.stringify(this.allMovies));
+        this.save();
     }
     
     getItemProps(flick, form) {

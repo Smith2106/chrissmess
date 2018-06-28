@@ -56,36 +56,49 @@ class App {
         span.classList.add(name);
         return span;
     }
-    
-    renderItem(flick) {
-        // Create item list element
-        const item = document.createElement('li');
-        item.classList.add('flick');
+
+    renderProperties(flick) {
+        const div = document.createElement('div');
+        div.classList.add('movieInfo');
         // Render the properties in the list element that aren't colors.
         const properties = Object.keys(flick);
         properties
             .filter(property => !property.toLowerCase().includes('color') && !property.includes('favorite'))
             .forEach(property => {
                 const span = this.renderProperty(property, flick[property]);
-                item.appendChild(span);
+                div.appendChild(span);
         });
+
+        return div;
+    }
+    
+    renderItem(flick) {
+        // Create item list element
+        const item = document.createElement('li');
+        item.classList.add('flick');
+        item.appendChild(this.renderProperties(flick));
     
         this.setColors(flick.backColor, flick.textColor, item);
+
+        const div = document.createElement('div');
+        div.classList.add('buttons');
         // Create delete and favorite button and have it handle deletion and favorite of elements
-        const delButton = this.renderButton('Delete', 'del-btn');
-        const favButton = this.renderButton('Favorite ★', 'fav-btn')
-        item.appendChild(delButton);
-        item.appendChild(favButton);
+        const delButton = this.renderButton('del-btn', '<i class="far fa-trash-alt" title="delete item"></i>');
+        const favButton = this.renderButton('fav-btn', '<i class="fas fa-star" title="toggle favorite"></i>');
+        
+        div.appendChild(delButton);
+        div.appendChild(favButton);
+        item.appendChild(div);
         delButton.addEventListener('click', e => this.handleDelete(flick, e));
         favButton.addEventListener('click', e => this.handleFavorite(flick, e));
     
         return item;
     }
 
-    renderButton(name, value) {
+    renderButton(value, icon) {
         const button = document.createElement('button');
-        button.textContent = name;
         button.classList.add(value);
+        button.innerHTML = icon;
         return button;
     }
     

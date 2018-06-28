@@ -67,6 +67,8 @@ button:hover {
 .del-btn:hover {
     color: rgb(231, 216, 216);
     background-color: rgb(136, 25, 25);
+    transform: scale(1.1);
+    transition: 0.25 ease-out;
 }
 
 .fav-btn {
@@ -77,6 +79,8 @@ button:hover {
 .fav-btn:hover {
     color: rgb(34, 32, 32);
     background-color: rgb(197, 209, 32);
+    transform: scale(1.1);
+    transition: 0.25 ease-out;
 }
 
 .angry {
@@ -86,8 +90,15 @@ button:hover {
     background: #870000;  /* fallback for old browsers */
     background: -webkit-linear-gradient(to right, #190A05, #870000);  /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to right, #190A05, #870000); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    color: white;
+    color: white !important;
     transition: 2s;
+}
+
+.flick {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 3rem;
 }
 
 .favorite {
@@ -96,11 +107,7 @@ button:hover {
     background: linear-gradient(to right, #dd3e54, #6be585); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     transform: scale(1.1);
     transition: 1s;
-}
-
-.favorite > span {
-    color: rgb(255, 255, 255);
-    transition: 1s;
+    color: rgb(255, 255, 255) !important;
 }
 
 .movie {
@@ -121,11 +128,16 @@ li {
     margin-bottom: 1rem;
     padding-top: 1rem;
     padding-bottom: 1rem;
-    width: 100%;
+    width: 90%;
     text-align: center;
     list-style-position: inside;
     position: relative;
-    right: 20px;
     font-family: 'Merriweather';
     transition: 1s;
 }
+
+ul {
+    display: flex;
+    justify-content: center;
+}
+

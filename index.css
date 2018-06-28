@@ -135,9 +135,3 @@ li {
     font-family: 'Merriweather';
     transition: 1s;
 }
-
-ul {
-    display: flex;
-    justify-content: center;
-}
-

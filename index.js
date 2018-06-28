@@ -22,7 +22,8 @@ class App {
         this.allMovies = JSON.parse(localStorage.getItem('movieList')) || [];
         this.allMovies.forEach(flick => {
             const item = this.renderItem(flick);
-            flick.favorite ? item.classList.add('favorite') : '';
+            if(flick.favorite) item.classList.add('favorite');
+            if(flick.rating.includes(':(')) this.angry(item);
             this.flicksList.appendChild(item);
         });
     }

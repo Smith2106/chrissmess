@@ -17,6 +17,7 @@ class App {
         // Set the properties of the flick object and add flicks to movies array
         this.getItemProps(flick, form);
         this.allMovies.push(flick);
+        localStorage.setItem('movieList', JSON.stringify(this.allMovies));
         // Render the properties in the item and render the item in the flicks list on the page
         const item = this.renderItem(flick);
         this.flicksList.appendChild(item);
@@ -33,12 +34,14 @@ class App {
         const item = e.target.closest('.flick');
         this.flicksList.removeChild(item);
         this.allMovies.splice(this.allMovies.indexOf(flick), 1);
+        localStorage.setItem('movieList', JSON.stringify(this.allMovies));
     }
 
     handleFavorite(flick, e) {
         // Toggle the favorite class
         const item = e.target.closest('.flick');
         flick.favorite = item.classList.toggle('favorite');
+        localStorage.setItem('movieList', JSON.stringify(this.allMovies));
     }
     
     getItemProps(flick, form) {

@@ -2,6 +2,7 @@ class App {
     constructor() {
         const form = document.querySelector('form');
         this.allMovies = [];
+        this.flicksList = document.querySelector('#flicks');
         form.addEventListener('submit', e => {
             e.preventDefault();
             this.handleSubmit(e);
@@ -11,7 +12,6 @@ class App {
     handleSubmit(e) {
         e.preventDefault(); // Prevent the form from submitting and automatically reloading the page.
         // Get flicks list and form.
-        const flicksList = document.querySelector('#flicks');
         const flick = {};
         const form = e.target;
         // Set the properties of the flick object and add flicks to movies array
@@ -19,7 +19,7 @@ class App {
         this.allMovies.push(flick);
         // Render the properties in the item and render the item in the flicks list on the page
         const item = this.renderItem(flick);
-        flicksList.appendChild(item);
+        this.flicksList.appendChild(item);
 
         console.log(flick.rating);
         if (flick.rating.includes(':(')) this.angry(item);
@@ -30,8 +30,7 @@ class App {
     }
 
     handleDelete(item, flick) {
-        const flicksList = document.querySelector('#flicks');
-        flicksList.removeChild(item);
+        this.flicksList.removeChild(item);
         this.allMovies.splice(this.allMovies.findIndex(movie => movie.name === flick.name), 1);
     }
 
@@ -105,7 +104,7 @@ class App {
     }
 }
 
-new App();
+const app = new App();
 
 const pressed = [];
   const secretCode = 'thor';
